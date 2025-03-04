@@ -3,5 +3,6 @@
     "outDir": "dist/js",
     "target": "ES6"
   },
-  "include": ["app/**/*"]
+  "include": ["app/**/*"],
+  "noEmitOnError": true
 }
