@@ -15,6 +15,7 @@ export class NegociacaoController {
 
   adicionar(): void {
     const negociacao = this.criaNegociacao();
+    negociacao.data.setDate(21);
 
     this._negociacoes.adiciona(negociacao);
     console.log(this._negociacoes.lista());
