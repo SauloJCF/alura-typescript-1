@@ -15,7 +15,7 @@ export class NegociacaoController {
     this._inputData = document.querySelector('#data');
     this._inputQuantidade = document.querySelector('#quantidade');
     this._inputValor = document.querySelector('#valor');
-    this._negociacoesView.update();
+    this._negociacoesView.update(this._negociacoes);
   }
 
   adicionar(): void {
@@ -26,6 +26,7 @@ export class NegociacaoController {
     console.log(this._negociacoes.lista());
 
     this.limparFormulario();
+    this._negociacoesView.update(this._negociacoes);
   }
 
   criaNegociacao(): Negociacao {
