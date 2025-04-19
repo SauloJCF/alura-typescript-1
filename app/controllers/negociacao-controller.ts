@@ -22,7 +22,13 @@ export class NegociacaoController {
 
   public adicionar(): void {
     const negociacao = this.criaNegociacao();
-    negociacao.data.setDate(21);
+
+    if (negociacao.data.getDay() === 0 || negociacao.data.getDay() === 6) {
+      this._mensagemView.update(
+        'Negociações sõ podem ser adicionadas em dias úteis!'
+      );
+      return;
+    }
 
     this._negociacoes.adiciona(negociacao);
     console.log(this._negociacoes.lista());
