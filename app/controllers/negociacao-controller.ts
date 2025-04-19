@@ -20,18 +20,17 @@ export class NegociacaoController {
     this._negociacoesView.update(this._negociacoes);
   }
 
-  adicionar(): void {
+  public adicionar(): void {
     const negociacao = this.criaNegociacao();
     negociacao.data.setDate(21);
 
     this._negociacoes.adiciona(negociacao);
     console.log(this._negociacoes.lista());
-    this._negociacoesView.update(this._negociacoes);
-    this._mensagemView.update('Negociação adicionada com sucesso!');
+    this.atualizaView();
     this.limparFormulario();
   }
 
-  criaNegociacao(): Negociacao {
+  private criaNegociacao(): Negociacao {
     const regex = /-/g;
     const data = new Date(this._inputData.value.replace(regex, ','));
     const quantidade = parseInt(this._inputQuantidade.value);
@@ -39,7 +38,12 @@ export class NegociacaoController {
     return new Negociacao(data, quantidade, valor);
   }
 
-  limparFormulario(): void {
+  private atualizaView() {
+    this._negociacoesView.update(this._negociacoes);
+    this._mensagemView.update('Negociação adicionada com sucesso!');
+  }
+
+  private limparFormulario(): void {
     this._inputData.value = '';
     this._inputQuantidade.value = '';
     this._inputValor.value = '';
