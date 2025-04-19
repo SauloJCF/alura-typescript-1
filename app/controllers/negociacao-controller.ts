@@ -12,6 +12,8 @@ export class NegociacaoController {
     '#negociacoesView'
   );
   private _mensagemView: MensagemView = new MensagemView('#mensagemView');
+  private readonly SABADO = 6;
+  private readonly DOMINGO = 0;
 
   constructor() {
     this._inputData = document.querySelector('#data');
@@ -23,7 +25,7 @@ export class NegociacaoController {
   public adicionar(): void {
     const negociacao = this.criaNegociacao();
 
-    if (negociacao.data.getDay() === 0 || negociacao.data.getDay() === 6) {
+    if (!this.ehDiaUtil(negociacao.data)) {
       this._mensagemView.update(
         'Negociações sõ podem ser adicionadas em dias úteis!'
       );
@@ -42,6 +44,10 @@ export class NegociacaoController {
     const quantidade = parseInt(this._inputQuantidade.value);
     const valor = parseInt(this._inputValor.value);
     return new Negociacao(data, quantidade, valor);
+  }
+
+  private ehDiaUtil(data: Date) {
+    return data.getDay() > this.DOMINGO && data.getDay() < this.SABADO;
   }
 
   private atualizaView() {
