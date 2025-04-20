@@ -14,7 +14,7 @@ export class Negociacao {
     return novaData;
   }
 
-  public criaDe(
+  public static criaDe(
     dataString: string,
     quantidadeString: string,
     valorString: string
@@ -22,7 +22,8 @@ export class Negociacao {
     const regex = /-/g;
     const data = new Date(dataString.replace(regex, ','));
     const quantidade = parseInt(quantidadeString);
-    const valor = parseInt(quantidadeString);
+    const valor = parseFloat(valorString);
+
     return new Negociacao(data, quantidade, valor);
   }
 }

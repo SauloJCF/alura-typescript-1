@@ -14,8 +14,7 @@ export class NegociacaoController {
         this._negociacoesView.update(this._negociacoes);
     }
     adicionar() {
-        const nTemp = new Negociacao(null, null, null);
-        const negociacao = nTemp.criaDe(this._inputData.value, this._inputQuantidade.value, this._inputValor.value);
+        const negociacao = Negociacao.criaDe(this._inputData.value, this._inputQuantidade.value, this._inputValor.value);
         if (!this.ehDiaUtil(negociacao.data)) {
             this._mensagemView.update('Negociações sõ podem ser adicionadas em dias úteis!');
             return;
