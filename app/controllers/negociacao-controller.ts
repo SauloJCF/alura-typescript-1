@@ -13,10 +13,7 @@ export class NegociacaoController {
     '#negociacoesView',
     true
   );
-  private _mensagemView: MensagemView = new MensagemView(
-    '#mensagemView',
-    false
-  );
+  private _mensagemView: MensagemView = new MensagemView('#mensagemView');
 
   constructor() {
     this._inputData = document.querySelector('#data');
