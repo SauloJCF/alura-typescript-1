@@ -22,7 +22,12 @@ export class NegociacaoController {
   }
 
   public adicionar(): void {
-    const negociacao = this.criaNegociacao();
+    const nTemp = new Negociacao(null, null, null);
+    const negociacao = nTemp.criaDe(
+      this._inputData.value,
+      this._inputQuantidade.value,
+      this._inputValor.value
+    );
 
     if (!this.ehDiaUtil(negociacao.data)) {
       this._mensagemView.update(
@@ -35,14 +40,6 @@ export class NegociacaoController {
     console.log(this._negociacoes.lista());
     this.atualizaView();
     this.limparFormulario();
-  }
-
-  private criaNegociacao(): Negociacao {
-    const regex = /-/g;
-    const data = new Date(this._inputData.value.replace(regex, ','));
-    const quantidade = parseInt(this._inputQuantidade.value);
-    const valor = parseInt(this._inputValor.value);
-    return new Negociacao(data, quantidade, valor);
   }
 
   private ehDiaUtil(data: Date) {

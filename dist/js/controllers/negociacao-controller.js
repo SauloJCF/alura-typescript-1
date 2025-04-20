@@ -14,7 +14,8 @@ export class NegociacaoController {
         this._negociacoesView.update(this._negociacoes);
     }
     adicionar() {
-        const negociacao = this.criaNegociacao();
+        const nTemp = new Negociacao(null, null, null);
+        const negociacao = nTemp.criaDe(this._inputData.value, this._inputQuantidade.value, this._inputValor.value);
         if (!this.ehDiaUtil(negociacao.data)) {
             this._mensagemView.update('Negociações sõ podem ser adicionadas em dias úteis!');
             return;
@@ -23,13 +24,6 @@ export class NegociacaoController {
         console.log(this._negociacoes.lista());
         this.atualizaView();
         this.limparFormulario();
-    }
-    criaNegociacao() {
-        const regex = /-/g;
-        const data = new Date(this._inputData.value.replace(regex, ','));
-        const quantidade = parseInt(this._inputQuantidade.value);
-        const valor = parseInt(this._inputValor.value);
-        return new Negociacao(data, quantidade, valor);
     }
     ehDiaUtil(data) {
         return (data.getDay() > DiasDaSemana.DOMINGO &&
