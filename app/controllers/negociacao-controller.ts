@@ -4,6 +4,7 @@ import { Negociacoes } from '../models/negociacoes.js';
 import { MensagemView } from '../views/mensagem-view.js';
 import { NegociacaoView } from '../views/negociacao-view.js';
 
+// Este comentário é um teste
 export class NegociacaoController {
   private _inputData: HTMLInputElement;
   private _inputQuantidade: HTMLInputElement;
