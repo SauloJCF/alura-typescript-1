@@ -6,9 +6,9 @@ import { NegociacaoView } from '../views/negociacao-view.js';
 
 // Este comentário é um teste
 export class NegociacaoController {
-  private _inputData: HTMLInputElement | null;
-  private _inputQuantidade: HTMLInputElement | null;
-  private _inputValor: HTMLInputElement | null;
+  private _inputData: HTMLInputElement;
+  private _inputQuantidade: HTMLInputElement;
+  private _inputValor: HTMLInputElement;
   private _negociacoes: Negociacoes = new Negociacoes();
   private _negociacoesView: NegociacaoView = new NegociacaoView(
     '#negociacoesView',
@@ -17,15 +17,15 @@ export class NegociacaoController {
   private _mensagemView: MensagemView = new MensagemView('#mensagemView');
 
   constructor() {
-    this._inputData = document.querySelector('#data');
-    this._inputQuantidade = document.querySelector('#quantidade');
-    this._inputValor = document.querySelector('#valor');
+    this._inputData = <HTMLInputElement>document.querySelector('#data');
+    this._inputQuantidade = document.querySelector('#quantidade') as HTMLInputElement;
+    this._inputValor = document.querySelector('#valor') as HTMLInputElement;
     this._negociacoesView.update(this._negociacoes);
   }
 
   public adicionar(): void {
     const negociacao = Negociacao.criaDe(
-      this._inputData.value,
+      this._inputData.value, 
       this._inputQuantidade.value,
       this._inputValor.value
     );
