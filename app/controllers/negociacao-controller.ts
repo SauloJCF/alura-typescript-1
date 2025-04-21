@@ -6,9 +6,9 @@ import { NegociacaoView } from '../views/negociacao-view.js';
 
 // Este comentário é um teste
 export class NegociacaoController {
-  private _inputData: HTMLInputElement;
-  private _inputQuantidade: HTMLInputElement;
-  private _inputValor: HTMLInputElement;
+  private _inputData: HTMLInputElement | null;
+  private _inputQuantidade: HTMLInputElement | null;
+  private _inputValor: HTMLInputElement | null;
   private _negociacoes: Negociacoes = new Negociacoes();
   private _negociacoesView: NegociacaoView = new NegociacaoView(
     '#negociacoesView',
