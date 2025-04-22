@@ -3,7 +3,11 @@ export abstract class View<T> {
   private escapar: boolean;
 
   constructor(seletor: string, escapar?: boolean) {
-    this.elemento = document.querySelector(seletor);
+    const elemento = document.querySelector(seletor) as HTMLElement;
+    if (!elemento) {
+      throw Error(`Seletor ${seletor} não existe no DOM e não foi possível instanciar a view.`);
+    }
+    this.elemento = document.querySelector(seletor) as HTMLElement;
 
     if (escapar) {
       this.escapar = escapar;
