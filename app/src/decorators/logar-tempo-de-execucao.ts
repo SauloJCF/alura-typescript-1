@@ -6,10 +6,10 @@ export function logarTempoDeExecucao() {
   ) {
     const metodoOriginal = descriptor.value;
 
-    descriptor.value = function () {
+    descriptor.value = function (...args: any[]) {
       const t1 = performance.now();
 
-      const retorno = metodoOriginal();
+      const retorno = metodoOriginal.apply(this, args);
 
       const t2 = performance.now();
 
