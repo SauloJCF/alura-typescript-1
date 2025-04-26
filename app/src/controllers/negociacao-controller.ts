@@ -18,14 +18,18 @@ export class NegociacaoController {
 
   constructor() {
     this._inputData = <HTMLInputElement>document.querySelector('#data');
-    this._inputQuantidade = document.querySelector('#quantidade') as HTMLInputElement;
+    this._inputQuantidade = document.querySelector(
+      '#quantidade'
+    ) as HTMLInputElement;
     this._inputValor = document.querySelector('#valor') as HTMLInputElement;
     this._negociacoesView.update(this._negociacoes);
   }
 
   public adicionar(): void {
+    const t1 = performance.now();
+
     const negociacao = Negociacao.criaDe(
-      this._inputData.value, 
+      this._inputData.value,
       this._inputQuantidade.value,
       this._inputValor.value
     );
@@ -41,6 +45,11 @@ export class NegociacaoController {
     console.log(this._negociacoes.lista());
     this.atualizaView();
     this.limparFormulario();
+
+    const t2 = performance.now();
+    console.log(
+      `O tempo de execução do adicionar foi de ${(t2 - t1) / 1000}ms`
+    );
   }
 
   private ehDiaUtil(data: Date) {
