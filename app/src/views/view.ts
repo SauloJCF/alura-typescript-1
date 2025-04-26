@@ -17,7 +17,6 @@ export abstract class View<T> {
   }
 
   public update(model: T) {
-    const t1 = performance.now();
     let template = this.template(model);
 
     if (this.escapar) {
@@ -25,8 +24,6 @@ export abstract class View<T> {
     }
 
     this.elemento.innerHTML = template;
-    const t2 = performance.now();
-    console.log(`O tempo de execução do update foi de ${(t2 - t1) / 1000}ms`);
   }
 
   protected abstract template(model: T): string;

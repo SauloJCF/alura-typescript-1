@@ -14,7 +14,6 @@ export class NegociacaoController {
         this._negociacoesView.update(this._negociacoes);
     }
     adicionar() {
-        const t1 = performance.now();
         const negociacao = Negociacao.criaDe(this._inputData.value, this._inputQuantidade.value, this._inputValor.value);
         if (!this.ehDiaUtil(negociacao.data)) {
             this._mensagemView.update('Negociações sõ podem ser adicionadas em dias úteis!');
@@ -24,8 +23,6 @@ export class NegociacaoController {
         console.log(this._negociacoes.lista());
         this.atualizaView();
         this.limparFormulario();
-        const t2 = performance.now();
-        console.log(`O tempo de execução do adicionar foi de ${(t2 - t1) / 1000}ms`);
     }
     ehDiaUtil(data) {
         return (data.getDay() > DiasDaSemana.DOMINGO &&
