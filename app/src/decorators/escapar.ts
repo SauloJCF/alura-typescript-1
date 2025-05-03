@@ -1,17 +1,21 @@
-export function escapar(target: any, propertyKey: string, descriptor: PropertyDescriptor) {
-    const metodoOriginal = descriptor.value;
+export function escapar(
+  target: any,
+  propertyKey: string,
+  descriptor: PropertyDescriptor
+) {
+  const metodoOriginal = descriptor.value;
 
-    descriptor.value = function(...args: any[]) {
-        let retorno = metodoOriginal.apply(this, args);
-        
-        if (typeof retorno === 'string') {
-            console.log(`Escapar em ação na classe: ${this.constructor.name} para o método: ${propertyKey}`);
-            
-            retorno = retorno.replace(/<script>[\s\S]*?<\/script>/, '');
-        }
+  descriptor.value = function (...args: any[]) {
+    let retorno = metodoOriginal.apply(this, args);
 
-        return retorno;
+    if (typeof retorno === 'string') {
+      // console.log(`Escapar em ação na classe: ${this.constructor.name} para o método: ${propertyKey}`);
+
+      retorno = retorno.replace(/<script>[\s\S]*?<\/script>/, '');
     }
 
-    return descriptor;
+    return retorno;
+  };
+
+  return descriptor;
 }
