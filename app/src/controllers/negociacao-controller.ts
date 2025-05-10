@@ -68,6 +68,22 @@ export class NegociacaoController {
   }
 
   public importarDados(): void {
-    alert('Oi');
+    fetch('http://localhost:8080/dados')
+      .then((res) => res.json())
+      .then((dados: any[]) => {
+        return dados.map((dadosDeHoje) => {
+          return new Negociacao(
+            new Date(),
+            dadosDeHoje.vezes,
+            dadosDeHoje.montante
+          );
+        });
+      })
+      .then((negociacoesDeHoje) => {
+        for (const negociacao of negociacoesDeHoje) {
+          this._negociacoes.adiciona(negociacao);
+        }
+        this._negociacoesView.update(this._negociacoes);
+      });
   }
 }

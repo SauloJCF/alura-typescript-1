@@ -45,7 +45,19 @@ export class NegociacaoController {
         this._inputData.focus();
     }
     importarDados() {
-        alert('Oi');
+        fetch('http://localhost:8080/dados')
+            .then((res) => res.json())
+            .then((dados) => {
+            return dados.map((dadosDeHoje) => {
+                return new Negociacao(new Date(), dadosDeHoje.vezes, dadosDeHoje.montante);
+            });
+        })
+            .then((negociacoesDeHoje) => {
+            for (const negociacao of negociacoesDeHoje) {
+                this._negociacoes.adiciona(negociacao);
+            }
+            this._negociacoesView.update(this._negociacoes);
+        });
     }
 }
 __decorate([
