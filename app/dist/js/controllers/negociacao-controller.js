@@ -44,6 +44,9 @@ export class NegociacaoController {
         this._inputValor.value = '';
         this._inputData.focus();
     }
+    importarDados() {
+        alert('Oi');
+    }
 }
 __decorate([
     domInjector('#data')

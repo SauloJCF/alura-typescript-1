@@ -66,4 +66,8 @@ export class NegociacaoController {
 
     this._inputData.focus();
   }
+
+  public importarDados(): void {
+    alert('Oi');
+  }
 }

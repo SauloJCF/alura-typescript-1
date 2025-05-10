@@ -10,5 +10,17 @@ if (formulario) {
     negociacaoController.adicionar();
   });
 } else {
-  throw new Error('Não foi possível iniciar a aplicação, verifique se o formulário existe!')
+  throw new Error(
+    'Não foi possível iniciar a aplicação, verifique se o formulário existe!'
+  );
+}
+
+const btnImportar = document.querySelector('#btn-importar');
+
+if (btnImportar) {
+  btnImportar.addEventListener('click', () => {
+    negociacaoController.importarDados();
+  });
+} else {
+  throw new Error('Botão importar não encontrado!');
 }
