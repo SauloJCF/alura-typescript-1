@@ -44,7 +44,11 @@ export class NegociacaoController {
     }
 
     this._negociacoes.adiciona(negociacao);
-    console.log(this._negociacoes.lista());
+    console.log('---------Teste');
+
+    console.log(negociacao.paraTexto());
+    console.log(this._negociacoes.paraTexto());
+
     this.atualizaView();
     this.limparFormulario();
   }
