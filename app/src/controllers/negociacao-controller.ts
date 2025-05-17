@@ -45,7 +45,6 @@ export class NegociacaoController {
     }
 
     this._negociacoes.adiciona(negociacao);
-    console.log('---------Teste');
 
     imprimir(negociacao, this._negociacoes);
 

@@ -29,7 +29,6 @@ export class NegociacaoController {
             return;
         }
         this._negociacoes.adiciona(negociacao);
-        console.log('---------Teste');
         imprimir(negociacao, this._negociacoes);
         this.atualizaView();
         this.limparFormulario();
