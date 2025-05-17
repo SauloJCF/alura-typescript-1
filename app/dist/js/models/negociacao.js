@@ -25,4 +25,9 @@ export class Negociacao {
       Valor: ${this.valor}
     `;
     }
+    ehIgual(negociacao) {
+        return (negociacao.data.getDate() === this._data.getDate() &&
+            negociacao.data.getMonth() === this._data.getMonth() &&
+            negociacao.data.getFullYear() === this._data.getFullYear());
+    }
 }

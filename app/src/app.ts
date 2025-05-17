@@ -18,8 +18,9 @@ if (formulario) {
 const btnImportar = document.querySelector('#btn-importar');
 
 if (btnImportar) {
-  btnImportar.addEventListener('click', () => {
+  btnImportar.addEventListener('click', (event) => {
     negociacaoController.importarDados();
+    event.preventDefault();
   });
 } else {
   throw new Error('Botão importar não encontrado!');
